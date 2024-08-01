@@ -1,7 +1,7 @@
 # This is a basic workflow to help you get started with Actions
 name: Azure Bicep Deployment
 
-# Controls when the workflow will run123
+# Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
@@ -35,3 +35,31 @@ jobs:
         with:
           resourceGroupName: "WebAppGroup" #change to reflect your Resource Group
           template: azure-resources.bicep
+
+## ** You can uncomment below code to deploy the resources, but 
+## for simplicity use the above ****
+#############################################
+# name: Deploy Azure Resources
+# on:
+#   push:
+#     branches:
+#       - main
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#       - name: Set up Azure CLI
+#         uses: azure/login@v1
+#         with:
+#           creds: ${{ secrets.AZURE_CREDENTIALS }}
+#       - name: Install Bicep CLI
+#         run: |
+#           curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
+#           chmod +x ./bicep
+#           sudo mv ./bicep /usr/local/bin/bicep
+#       - name: Build and deploy Azure resources
+#         run: |
+#           bicep build azure-resources.bicep
+#           az deployment sub create --name myDeployment --location eastus2 --template-file ./azure-resources.json
