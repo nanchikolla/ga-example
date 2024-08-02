@@ -36,7 +36,7 @@ jobs:
           resourceGroupName: "WebAppGroup" #change to reflect your Resource Group
           template: azure-resources.bicep
 
-          ## THis is testing
+
 ## ** You can uncomment below code to deploy the resources, but 
 ## for simplicity use the above ****
 #############################################
